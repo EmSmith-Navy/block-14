@@ -11,14 +11,14 @@ const userInputString = prompt(
 const stringArray = userInputString.split(",");
 
 // Convert the array of strings into an array of numbers.
-const numbers = [];
+const arrNumbers = [];
 for (let i = 0; i < stringArray.length; i++) {
   const str = stringArray[i];
   const number = parseInt(str);
   numbers.push(number);
 }
 
-// Peform some calculations on the numbers.
+// Perform some calculations on the numbers.
 console.log(numbers);
 console.log(`You have given ${getLength(numbers)} numbers.`);
 console.log(`The sum of your numbers is ${getSum(numbers)}.`);
@@ -37,7 +37,9 @@ console.log(`The odd numbers you gave are ${getOdds(numbers)}.`);
  * @returns {number} the length of the array
  */
 function getLength(numbers) {
-  // TODO
+  let num = 12345;
+  let length = num.toString().length;
+  console.log(length); // Output: 5
 }
 
 /**
@@ -45,31 +47,57 @@ function getLength(numbers) {
  * @returns {number} the sum of the numbers
  */
 function getSum(numbers) {
-  // TODO
+  const numbers = [1, 2, 3, 4, 5];
+  let sum = 0;
+
+  for (let i = 0; i < numbers.length; i++) {
+    sum += numbers[i];
+  }
 }
+console.log(sum);
 
 /**
  * @param {number[]} numbers an array of integers
  * @returns {number} the mean of the numbers
  */
 function getMean(numbers) {
-  // TODO
+  function getMean() {
+    let sum = 0;
+    for (let i = 0; i < numbers.length; i++) {
+      sum += numbers[i];
+    }
+    return sum / numbers.length;
+  }
 }
+const number = [1, 2, 3, 4, 5];
+const mean = getMean(numbers);
+console.log(mean); // Output: 3
 
 /**
  * @param {number[]} numbers an array of integers
  * @returns {number} the smallest of the numbers
  */
 function getMin(numbers) {
-  // TODO
+  function getMin() {
+    let sum = 0;
+    for (let i = 0; i < number.length; i++) {
+      sum += numbers[i];
+    }
+    return sum / numbers.length;
+  }
 }
+const numbers = [1, 2, 3, 4, 5];
+const minValue = math.min(...arrNumbers);
+
+console.log(minValue); // Output: 5
 
 /**
  * @param {number[]} numbers an array of integers
  * @returns {number} the largest of the numbers
  */
 function getMax(numbers) {
-  // TODO
+  const numbers = [1, 2, 3, 4, 5];
+  const max = Math.max(...numbers);
 }
 
 /**
@@ -77,7 +105,14 @@ function getMax(numbers) {
  * @returns {number} the range of the numbers (max - min)
  */
 function getRange(numbers) {
-  // TODO
+  function range(start, end) {
+    const result = [];
+    for (let i = 1; i <= 5; i++) {
+      result.push(i);
+    }
+    return result;
+  }
+  const numbers = range(1, 5);
 }
 
 /**
@@ -85,7 +120,21 @@ function getRange(numbers) {
  * @returns {number[]} the even numbers in the array
  */
 function getEvens(numbers) {
-  // TODO
+  function getEven(arrNumbers) {
+    const evenNumbers = [i];
+
+    for (let i = 0; i < Array.length; i++) {
+      if (array[i] % 2 === 0) {
+        evenNumbers.push(array[i]);
+      }
+    }
+    return evenNumbers;
+  }
+
+  const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  const evens = getEvens(numbers);
+
+  console.log(evens);
 }
 
 /**
@@ -93,7 +142,21 @@ function getEvens(numbers) {
  * @returns {number[]} the odd numbers in the array
  */
 function getOdds(numbers) {
-  // TODO
+  function getOdds(arrNumbers) {
+    const oddNumbers = [i];
+
+    for (let i = 0; i < Array.length; i++) {
+      if (array[i] % 2 === 0) {
+        oddsNumbers.push(array[i]);
+      }
+    }
+    return oddsNumbers;
+  }
+
+  const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const evens = getOdds(numbers);
+
+  console.log(getOdds)(numbers);
 }
 
 console.log("New line");
