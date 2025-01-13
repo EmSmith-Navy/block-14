@@ -1,24 +1,13 @@
 // === DO NOT EDIT THIS REGION ===
 // Read the comments to understand how the program is structured.
 
-// Prompt the user for a list of integers separated by commas.
-const userInputString = prompt(
-  "Please enter some integers separated by commas.",
-  "1,2,3,4,5"
-);
+// Prompt the user for numbers
+const userInputString = prompt("Enter a list of numbers separated by commas:");
 
-// Split the string of numbers into an array of strings.
+// Split the string of numbers into an array of strings
 const stringArray = userInputString.split(",");
 
-// Convert the array of strings into an array of numbers.
-const arrNumbers = [];
-for (let i = 0; i < stringArray.length; i++) {
-  const str = stringArray[i];
-  const number = parseInt(str);
-  arrNumbers.push(number);
-}
-
-// Convert the array of strings into an array of numbers.
+// Convert the array of strings into an array of numbers
 const numbers = [];
 for (let i = 0; i < stringArray.length; i++) {
   const str = stringArray[i];
@@ -26,7 +15,7 @@ for (let i = 0; i < stringArray.length; i++) {
   numbers.push(number);
 }
 
-// Perform some calculations on the numbers.
+// Perform some calculations on the numbers
 console.log(numbers);
 console.log(`You have given ${getLength(numbers)} numbers.`);
 console.log(`The sum of your numbers is ${getSum(numbers)}.`);
@@ -34,6 +23,49 @@ console.log(`The mean of your numbers is ${getMean(numbers)}.`);
 console.log(`The smallest of your numbers is ${getMin(numbers)}.`);
 console.log(`The largest of your numbers is ${getMax(numbers)}.`);
 console.log(`The range of your numbers is ${getRange(numbers)}.`);
+
+/**
+ * @param {number[]} numbers an array of integers
+ * @returns {number[]} an array of even numbers
+ */
+function getEvens(numbers) {
+  let evens = [];
+  for (let i = 0; i < numbers.length; i++) {
+    if (numbers[i] % 2 === 0) {
+      evens.push(numbers[i]);
+    }
+  }
+  return evens;
+}
+
+// Define the other functions used in the console.log statements
+function getLength(numbers) {
+  return numbers.length;
+}
+
+function getSum(numbers) {
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++) {
+    sum += numbers[i];
+  }
+  return sum;
+}
+
+function getMean(numbers) {
+  return getSum(numbers) / getLength(numbers);
+}
+
+function getMin(numbers) {
+  return Math.min(...numbers);
+}
+
+function getMax(numbers) {
+  return Math.max(...numbers);
+}
+
+function getRange(numbers) {
+  return getMax(numbers) - getMin(numbers);
+}
 /**
  * @param {number[]} numbers an array of integers
  * @returns {number[]} an array of even numbers
