@@ -15,6 +15,14 @@ const arrNumbers = [];
 for (let i = 0; i < stringArray.length; i++) {
   const str = stringArray[i];
   const number = parseInt(str);
+  arrNumbers.push(number);
+}
+
+// Convert the array of strings into an array of numbers.
+const numbers = [];
+for (let i = 0; i < stringArray.length; i++) {
+  const str = stringArray[i];
+  const number = parseInt(str);
   numbers.push(number);
 }
 
@@ -26,6 +34,20 @@ console.log(`The mean of your numbers is ${getMean(numbers)}.`);
 console.log(`The smallest of your numbers is ${getMin(numbers)}.`);
 console.log(`The largest of your numbers is ${getMax(numbers)}.`);
 console.log(`The range of your numbers is ${getRange(numbers)}.`);
+/**
+ * @param {number[]} numbers an array of integers
+ * @returns {number[]} an array of even numbers
+ */
+function getEvens(numbers) {
+  let evens = [];
+  for (let i = 0; i < numbers.length; i++) {
+    if (numbers[i] % 2 === 0) {
+      evens.push(numbers[i]);
+    }
+  }
+  return evens;
+}
+
 console.log(`The even numbers you gave are ${getEvens(numbers)}.`);
 console.log(`The odd numbers you gave are ${getOdds(numbers)}.`);
 
@@ -60,59 +82,56 @@ function getMean(numbers) {
   const sum = getSum(numbers);
   return sum / numbers.length;
 }
-const number = [1, 2, 3, 4, 5];
-const mean = getMean(numbers);
-console.log(mean); // Output: 3
-
-/**
- * @param {number[]} numbers an array of integers
- * @returns {number} the smallest of the numbers
- */
-function getMin(numbers) {
-  return Math.min(...numbers);
+// Function to prompt the user for numbers
+function getUserNumbers() {
+  const input = prompt("Enter a list of numbers separated by commas:");
+  return input.split(",").map(Number);
 }
 
-/**
- * @param {number[]} numbers an array of integers
- * @returns {number} the largest of the numbers
- */
-function getMax(numbers) {
-  return Math.max(...numbers);
+// Function to calculate the mean
+function calculateMean(numbers) {
+  const sum = numbers.reduce((acc, num) => acc + num, 0);
+  return sum / numbers.length;
 }
 
-/**
- * @param {number[]} numbers an array of integers
- * @returns {number} the range of the numbers (max - min)
- */
-function getRange(numbers) {
-  return getMax(numbers) - getMin;
-}
-
-/**
- * @param {number[]} numbers an array of integers
- * @returns {number[]} the even numbers in the array
- */
-function getEvens(numbers) {
-  return numbers.filter((num) => num % 2 === 0);
-}
-
-const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-const evens = getEvens(numbers);
-console.log(evens);
-
-/**
- * @param {number[]} numbers an array of integers
- * @returns {number[]} the odd numbers in the array
- */
-function getOdds(numbers) {
-  function getOdds(numbers) {
-    return numbers.filter((num) => num % 2 !== 0);
+// Function to calculate the median
+function calculateMedian(numbers) {
+  numbers.sort((a, b) => a - b);
+  const mid = Math.floor(numbers.length / 2);
+  if (numbers.length % 2 === 0) {
+    return (numbers[mid - 1] + numbers[mid]) / 2;
+  } else {
+    return numbers[mid];
   }
-
-  const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-  const evens = getOdds(numbers);
-
-  console.log(getOdds)(numbers);
 }
 
-console.log("New line");
+// Function to calculate the mode
+function calculateMode(numbers) {
+  const frequency = {};
+  numbers.forEach(num => {
+    frequency[num] = (frequency[num] || 0) + 1;
+  });
+  let maxFreq = 0;
+  let mode = [];
+  for (const num in frequency) {
+    if (frequency[num] > maxFreq) {
+      maxFreq = frequency[num];
+      mode = [Number(num)];
+    } else if (frequency[num] === maxFreq) {
+      mode.push(Number(num));
+    }
+  }
+  return mode;
+}
+
+// Main function to execute the calculations
+function main() {
+  const numbers = getUserNumbers();
+  console.log("Numbers:", numbers);
+  console.log("Mean:", calculateMean(numbers));
+  console.log("Median:", calculateMedian(numbers));
+  console.log("Mode:", calculateMode(numbers));
+}
+
+// Run the main function
+main();
